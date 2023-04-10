@@ -1,5 +1,8 @@
 #pragma once
 
+#include <string>
+#include <iostream>
+
 using namespace std;
 
 namespace ariel {
@@ -9,19 +12,19 @@ namespace ariel {
 
     public:
         //inline
-        card(int num, int type) {
-            this->num = num; 
-            this->type=type;
-        }
+        card() : num(0), type(0) {}
 
         int getNum() const {return num;}
 
-        friend bool operator- (const card& c1, const card& c2) {
-            return (c1.getNum()) - (c2.getNum());
+        friend int operator- (const card& card1, const card& card2) {
+            return (card1.getNum()) - (card2.getNum());
         }
 
+        // void operator= (const card& cardio) { this->num = cardio.num; }
+
         //outline
-        friend ostream& operator<< (ostream& output, const card& c);
+        card(int, int);
+        friend ostream& operator<< (ostream& output, const card& cardo);
         string toString();
     };
 }

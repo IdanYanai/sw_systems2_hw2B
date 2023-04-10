@@ -1,31 +1,34 @@
-#include "card.hpp"
 #include <string>
 #include <iostream>
 
 using namespace std;
 
+#include "card.hpp"
+
 namespace ariel {
-    ostream& operator<< (ostream& output, const card& c) {
+    card::card(int num, int type) : num(num), type(type) {}
+
+    ostream& operator<< (ostream& output, const card& cardo) {
         string sType;
-        if(c.type == 0)
+        if(cardo.type == 0)
             sType = " of Clubs";
-        else if(c.type == 1)
+        else if(cardo.type == 1)
             sType = " of Diamonds";
-        else if(c.type == 2)
+        else if(cardo.type == 2)
             sType = " of Hearts";
-        else if(c.type == 3)
+        else if(cardo.type == 3)
             sType = " of Spades";
 
-        if(c.num == 10)
-            output << "Jack " << sType;    
-        else if(c.num == 11)
-            output << "Queen " << sType;
-        else if(c.num == 12)
-            output << "King " << sType;
-        else if(c.num == 1)
-            output << "Ace " << sType;
+        if(cardo.num == 11)
+            output << "Jack" << sType;    
+        else if(cardo.num == 12)
+            output << "Queen" << sType;
+        else if(cardo.num == 13)
+            output << "King" << sType;
+        else if(cardo.num == 1)
+            output << "Ace" << sType;
         else
-            output << to_string(c.num) << ' ' << sType;
+            output << to_string(cardo.num) << sType;
 
         return output;
     }
@@ -33,25 +36,25 @@ namespace ariel {
     string card::toString() {
         string sType;
         if(type == 0)
-            sType = " of Clubs";
+            sType = string(" of Clubs");
         else if(type == 1)
-            sType = " of Diamonds";
+            sType = string(" of Diamonds");
         else if(type == 2)
-            sType = " of Hearts";
+            sType = string(" of Hearts");
         else if(type == 3)
-            sType = " of Spades";
+            sType = string(" of Spades");
 
         string desc;
-        if(num == 10)
-            desc = "Jack" + sType;    
-        else if(num == 11)
-            desc = "Queen" + sType;
+        if(num == 11)
+            desc = string("Jack") + sType;    
         else if(num == 12)
-            desc = "King" + sType;
+            desc = string("Queen") + sType;
+        else if(num == 13)
+            desc = string("King") + sType;
         else if(num == 1)
-            desc = "Ace" + sType;
+            desc = string("Ace") + sType;
         else
-            desc = to_string(num) + ' ' + sType;
+            desc = to_string(num) + sType;
 
         return desc;
     }
