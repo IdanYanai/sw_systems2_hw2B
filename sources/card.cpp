@@ -28,7 +28,7 @@ namespace ariel {
         else if(cardo.num == 1)
             output << "Ace" << sType;
         else
-            output << to_string(cardo.num) << sType;
+            output << to_string(cardo.num) << sType << flush;
 
         return output;
     }
@@ -55,7 +55,7 @@ namespace ariel {
             desc = string("Ace") + sType;
         else
             desc = to_string(num) + sType;
-
+        
         return desc;
     }
 }

@@ -1,14 +1,14 @@
 #include "player.hpp"
 #include <string>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
 namespace ariel {
     class Game {
     private:
-        Player& p1, p2;
-        vector<string> log;
+        Player &p1, &p2;
         int turns, p1Wins, p2Wins, draws;
 
     public:
