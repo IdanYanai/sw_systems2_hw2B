@@ -15,6 +15,7 @@ namespace ariel {
         card() : num(0), type(0) {}
 
         int getNum() const {return num;}
+        int getType() const {return type;}
 
         friend int operator- (const card& card1, const card& card2) {
             return (card1.getNum()) - (card2.getNum());

@@ -63,8 +63,11 @@ namespace ariel {
         while(p1Card - p2Card == 0) {
             log << "Draw. ";
             draws++;
-            if(p1.stacksize() < 2)
+            if(p1.stacksize() < 2) {
+                p1.addScore(onTable/2);
+                p2.addScore(onTable/2);
                 return;
+            }
 
             p1Card = p1.playCard();
             p2Card = p2.playCard();
@@ -76,7 +79,22 @@ namespace ariel {
             log << p1.getName() << " played " << p1Card.toString() << ". ";
             log << p2.getName() << " played " << p2Card.toString() << ". ";
         }
-        if(p1Card - p2Card > 0) {
+
+        // CHECK ACE
+        if((p1Card.getNum() == 1) && (p2Card.getNum() != 2)) {
+            p1.addScore(onTable);
+            log << p1.getName() << " wins. \n";
+            p1Wins++;
+        }
+        else if ((p1Card.getNum() != 2) && (p2Card.getNum() == 1))
+        {
+            p2.addScore(onTable);
+            log << p2.getName() << " wins. \n";
+            p2Wins++;
+        }
+        
+        // if no one has an ACE
+        else if(p1Card - p2Card > 0) {
             p1.addScore(onTable);
             log << p1.getName() << " wins. \n";
             p1Wins++;
